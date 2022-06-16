@@ -1,6 +1,8 @@
 # SNU_PROJECT
 Machine Intelligence Special Lecture Project.
 
+Note : Download these files in './AI_challenge_data/'
+
 There are 4 python files.
 
 1. datasets.py is a dataloader file. It includes two types dataloader, one is for train and validation, and the other is for test
