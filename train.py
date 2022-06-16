@@ -27,9 +27,9 @@ parser.add_argument('--checkpoint_dir', type=str, default=None)
 
 parser.add_argument('--loss', type=str, default='l1', help='l1/mse/rmse')
 parser.add_argument('--lr', type=float, default=1e-4)
-parser.add_argument('--batch_size', type=int, default=16)
-parser.add_argument('--num_epochs', type=int, default = 10)
-parser.add_argument('--d_embed', type=int, default =64)
+parser.add_argument('--batch_size', type=int, default=64)
+parser.add_argument('--num_epochs', type=int, default = 300)
+parser.add_argument('--d_embed', type=int, default =128)
 parser.add_argument('--seed', type=int, default = 133)
 args = parser.parse_args()
 
@@ -74,13 +74,13 @@ optimizer = optim.AdamW(params=model.parameters(), lr=args.lr, weight_decay=1e-4
 
 dataset = SEMIDataset('train', args.sem_id)
 dataloader = DataLoader(dataset=dataset, batch_size=args.batch_size,
-                        shuffle=True, num_workers=0, pin_memory=False, drop_last=False
+                        shuffle=True, num_workers=4, pin_memory=False, drop_last=False
                         )
 size = len(dataloader.dataset)
 
 valid_dataset = SEMIDataset('val', args.sem_id)
 valid_dataloader = DataLoader(dataset=valid_dataset, batch_size=args.batch_size,
-                              shuffle=False, num_workers=0, pin_memory=False, drop_last=False
+                              shuffle=False, num_workers=4, pin_memory=False, drop_last=False
                               )
 valid_size = len(valid_dataloader.dataset)
 
